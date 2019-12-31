@@ -70,7 +70,7 @@ Dir.glob('./**/*').each do |f|
 
   # 移動
   if FileTest.file? f
-    if File.basename(f) == 'move_files.rb'
+    if File.basename(f) == 'move_files.rb' || File.basename(f) == 'select_files.rb'
     else
       # カレントディレクトリを変更（ブロックを抜けると戻る）
       FileUtils.chdir(File.dirname(f)) {
