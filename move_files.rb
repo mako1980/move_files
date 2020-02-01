@@ -9,13 +9,9 @@ require 'fileutils'
 # ※2 連番はファイル名がかぶっている場合に振る
 #-------------------------------------------------
 
-# TODO 別フォルダに移動したり、
-#      ゴミフォルダは削除するなど
-
 cur = Dir.pwd + '/'
 i = 0 # 連番用
 j = 0 # 連番用
-# not_jpg = Array.new # jpg以外のリスト
 
 # 画像の移動先フォルダを作成
 if !Dir.exist?('pic')
@@ -26,7 +22,6 @@ end
 if !Dir.exist?('other')
   Dir.mkdir('other')
 end
-
 
 #-------------------------------------------------
 # ファイル名を変更しpic/年月へ移動
@@ -65,7 +60,6 @@ Dir.glob('./**/*').each do |f|
       # 移動先に存在する場合、連番を振る
       new_name = to_dir_name + '/' + File.mtime(f).strftime('%y%m%d_%H%M%S') + '_' + j.to_s + ext
     end
-    # not_jpg.push(f)
   end
 
   # 移動
@@ -86,7 +80,3 @@ puts '--------------------'
 puts 'done.'
 puts '--------------------'
 
-# puts '--------------------'
-# puts 'not_jpg_list'
-# puts '--------------------'
-# puts not_jpg
